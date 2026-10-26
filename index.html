@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123f32">
+<title>EcoMetrics — Environmental Data Hub</title>
+<style>
+:root{--forest:#123f32;--forest2:#1d694b;--green:#2e875c;--sage:#e4f0e5;--mint:#f5f8f4;--ink:#18352e;--muted:#687c73;--line:#dfe9e2;--white:#fff;--amber:#a66b24;--red:#a84439;--shadow:0 12px 34px rgba(18,63,50,.07)}
+*{box-sizing:border-box}body{margin:0;background:#f7f9f6;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #8dc7a3;outline-offset:2px}.app{min-height:100vh;display:grid;grid-template-columns:246px minmax(0,1fr)}.sidebar{background:linear-gradient(160deg,#123f32,#0d3028);color:#f4fff8;padding:25px 16px;display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh}.brand{display:flex;align-items:center;gap:11px;padding:0 10px 27px}.brand-mark{width:42px;height:42px;display:grid;place-items:center;background:#e5f2e4;color:var(--forest);border-radius:14px;font-size:23px}.brand strong{font-size:21px;letter-spacing:-.7px;display:block}.brand small{color:#b7d6c4;font-size:11px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#d7e9df;text-align:left;border-radius:11px;padding:12px 13px;display:flex;align-items:center;gap:12px;font-weight:650}.nav button:hover,.nav button.active{background:#236448;color:white}.nav .ico{font-size:18px;width:22px;text-align:center}.nav-divider{height:1px;background:#376354;margin:17px 8px}.side-bottom{margin-top:auto;padding:20px 10px 3px;color:#bddac9}.leaf-art{font-size:36px;color:#92cda4}.side-bottom strong{display:block;color:white;font-size:14px;margin-top:10px}.side-bottom p{font-size:12px;margin:4px 0 0}.main{min-width:0}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;gap:16px}.topbar-title{font-size:17px;font-weight:800;letter-spacing:-.3px}.topbar-right{display:flex;align-items:center;gap:16px}.period-label{color:var(--muted);font-size:12px}.user{display:flex;align-items:center;gap:10px}.avatar{width:36px;height:36px;border-radius:50%;background:#d9ebdd;color:var(--forest);display:grid;place-items:center;font-weight:800}.user strong{display:block;font-size:12px}.user small{display:block;color:var(--muted);font-size:11px}.mobile-menu{display:none}.content{padding:25px 30px 40px;max-width:1600px;margin:0 auto}.welcome{background:linear-gradient(110deg,#e6f1e6,#f0f6e9);border:1px solid #d9e8d9;border-radius:18px;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden;position:relative}.welcome:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:10%;top:-170px;border:35px solid rgba(63,132,82,.09)}.eyebrow{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--green)}h1{font-size:25px;line-height:1.2;letter-spacing:-.7px;margin:5px 0 7px;color:var(--forest)}.welcome p{margin:0;color:#526d60}.welcome-note{position:relative;z-index:1;background:#fffbdc;border:1px solid #eee8bd;color:#4f633b;padding:12px 15px;border-radius:13px;max-width:190px;font-weight:700;font-size:12px}.welcome-note span{font-size:20px;margin-right:7px}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}.metric{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px;min-width:0;box-shadow:0 4px 15px rgba(18,63,50,.025)}.metric-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:11px;font-weight:700}.metric-icon{width:34px;height:34px;border-radius:11px;background:var(--sage);display:grid;place-items:center;font-size:17px}.metric-value{font-size:25px;letter-spacing:-.8px;font-weight:850;margin:10px 0 4px;color:var(--forest)}.metric-foot{font-size:11px;color:var(--muted)}.positive{color:var(--green);font-weight:750}.negative{color:var(--amber);font-weight:750}.view-tabs{display:flex;gap:7px;overflow-x:auto;margin:22px 0 16px;padding:4px 0}.tab{border:1px solid var(--line);background:#fff;color:#51675d;border-radius:10px;padding:11px 17px;white-space:nowrap;font-weight:750}.tab.active{background:var(--forest2);color:#fff;border-color:var(--forest2)}.view{display:none}.view.active{display:block}.section-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.95fr);gap:16px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0;box-shadow:0 4px 15px rgba(18,63,50,.025)}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:18px}.panel h2{font-size:16px;letter-spacing:-.3px;margin:0;color:var(--forest)}.panel-sub{color:var(--muted);font-size:12px;margin-top:4px}.select,.small-btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 10px;color:var(--ink);font-size:12px}.small-btn:hover{background:var(--mint)}.data-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.data-card{border-radius:12px;background:#f7faf7;padding:15px}.data-title{display:flex;align-items:center;gap:8px;font-weight:750}.data-title span{font-size:18px}.data-number{font-size:22px;font-weight:850;letter-spacing:-.5px;margin:10px 0 2px}.data-sub{font-size:11px;color:var(--muted)}.chart-title{font-size:13px;font-weight:800;margin:15px 0 10px}.chart{width:100%;height:auto;display:block}.chart text{font-family:inherit;fill:#71837a;font-size:10px}.legend{display:flex;gap:15px;flex-wrap:wrap;justify-content:center;color:var(--muted);font-size:11px;margin-top:8px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.insights{background:#f7faf6}.insight{display:flex;gap:11px;padding:13px 0;border-bottom:1px solid var(--line)}.insight:last-child{border-bottom:0}.insight-icon{width:33px;height:33px;flex:0 0 33px;border-radius:50%;background:#e1f0e2;display:grid;place-items:center;font-size:15px}.insight strong{display:block;font-size:12px;margin-bottom:3px}.insight p{font-size:11px;color:var(--muted);margin:0}.carbon-card{margin-top:15px;background:linear-gradient(120deg,#edf6eb,#f8fbf6);border:1px solid #dceadd;border-radius:15px;padding:19px}.carbon-card h3{margin:0 0 8px;font-size:13px}.carbon-value{font-size:25px;font-weight:850;color:var(--forest)}.carbon-card p{font-size:11px;color:var(--muted);margin:4px 0 14px}.btn{border:0;border-radius:9px;padding:10px 14px;background:var(--forest2);color:#fff;font-weight:750;font-size:12px}.btn:hover{background:var(--forest)}.btn.secondary{background:#fff;border:1px solid var(--line);color:var(--forest)}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:15px}.toolbar h2{margin:0;font-size:17px;color:var(--forest)}.toolbar p{margin:4px 0 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:620px}th,td{text-align:left;padding:13px 12px;border-bottom:1px solid #edf1ed;font-size:12px}th{color:var(--muted);font-weight:750;background:#f8faf8}td{color:#334e42}td input,td select{width:100%;min-width:90px;border:1px solid var(--line);border-radius:7px;padding:7px;background:#fff;color:var(--ink)}td input[type=number]{min-width:76px}.category{display:flex;align-items:center;gap:8px;font-weight:750}.category-icon{width:28px;height:28px;display:grid;place-items:center;background:var(--sage);border-radius:8px}.table-note{font-size:11px;color:var(--muted);margin-top:12px}.table-total{display:flex;justify-content:flex-end;gap:30px;padding:16px 4px 0;font-size:12px}.table-total strong{font-size:15px;color:var(--forest)}.status{display:inline-block;border-radius:999px;padding:5px 8px;background:#e4f2e5;color:#2a714b;font-size:10px;font-weight:800}.status.review{background:#fff0d8;color:#92601d}.status.missing{background:#f9e7e4;color:#9a4038}.governance-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.policy-list{display:grid;gap:10px}.policy{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:12px;padding:13px}.policy-check{width:32px;height:32px;flex:0 0 32px;border-radius:10px;background:var(--sage);display:grid;place-items:center}.policy-main{flex:1;min-width:0}.policy-main strong{display:block;font-size:12px}.policy-main small{color:var(--muted);font-size:11px}.policy .status{white-space:nowrap}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:var(--muted);font-weight:750}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:#fff;color:var(--ink)}.field textarea{min-height:82px;resize:vertical}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.empty{padding:20px;text-align:center;color:var(--muted);font-size:12px}.toast{position:fixed;right:20px;bottom:20px;background:var(--forest);color:#fff;border-radius:12px;padding:13px 17px;box-shadow:var(--shadow);display:none;z-index:20;max-width:calc(100% - 40px);font-size:13px}.toast.show{display:block;animation:fadein .2s}@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}footer{padding:24px 0 0;color:#819188;font-size:10px;text-align:center}
+@media(max-width:1100px){.app{grid-template-columns:205px minmax(0,1fr)}.sidebar{padding:20px 12px}.content{padding:22px 20px}.topbar{padding:0 20px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.section-grid{grid-template-columns:1fr}.governance-grid{grid-template-columns:1fr}.welcome-note{max-width:165px}}
+@media(max-width:680px){.app{display:block}.sidebar{position:fixed;z-index:30;left:0;top:0;width:255px;height:100dvh;min-height:0;transform:translateX(-105%);transition:transform .22s;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.mobile-menu{display:inline-flex;border:1px solid var(--line);background:#fff;color:var(--forest);border-radius:9px;padding:8px 10px}.topbar{height:66px;padding:0 14px}.topbar-title{font-size:15px}.period-label{display:none}.user small{display:none}.user{gap:6px}.content{padding:15px 13px 28px}.welcome{padding:19px;align-items:flex-start}.welcome h1{font-size:22px}.welcome-note{display:none}.metrics{gap:9px;margin:12px 0}.metric{padding:13px}.metric-value{font-size:21px}.metric-head{align-items:flex-start}.metric-icon{width:29px;height:29px;font-size:14px}.view-tabs{margin:16px 0 12px}.tab{padding:10px 12px;font-size:12px}.panel{padding:15px}.data-cards{gap:8px}.data-card{padding:12px}.data-number{font-size:19px}.panel-head{flex-wrap:wrap}.select{max-width:100%}.toolbar{align-items:flex-start}.table-total{justify-content:space-between;gap:12px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.governance-grid{gap:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+.home-brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <a class="brand home-brand" href="./index.html" aria-label="Back to the EcoMetrics landing page"><div class="brand-mark">🌿</div><div><strong>EcoMetrics</strong><small>Environmental data hub</small></div></a>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-view="overview"><span class="ico">⌂</span> Overview</button>
+    <button data-view="energy"><span class="ico">ϟ</span> Energy Usage</button>
+    <button data-view="waste"><span class="ico">♻</span> Waste Consumption</button>
+    <button data-view="governance"><span class="ico">⬡</span> Governance</button>
+    <div class="nav-divider"></div>
+    <button data-view="reports"><span class="ico">▤</span> Data & Reports</button>
+  </nav>
+  <div class="side-bottom"><div class="leaf-art">❧</div><strong>Better data.<br>Lower impact.</strong><p>One clearer view of your environmental performance.</p></div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:11px"><button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button><div class="topbar-title" id="pageTitle">Environmental overview</div></div>
+    <div class="topbar-right"><span class="period-label">Reporting period</span><select class="select" id="globalMonth" aria-label="Reporting month"><option value="2025-04">Apr 2025</option><option value="2025-05">May 2025</option><option value="2025-06" selected>Jun 2025</option><option value="2025-07">Jul 2025</option><option value="2025-08">Aug 2025</option><option value="2025-09">Sep 2025</option><option value="2025-10">Oct 2025</option><option value="2025-11">Nov 2025</option><option value="2025-12">Dec 2025</option><option value="2026-01">Jan 2026</option><option value="2026-02">Feb 2026</option><option value="2026-03">Mar 2026</option><option value="2026-04">Apr 2026</option><option value="2026-05">May 2026</option><option value="2026-06">Jun 2026</option><option value="2026-07">Jul 2026</option><option value="2026-08">Aug 2026</option><option value="2026-09">Sep 2026</option><option value="2026-10">Oct 2026</option></select>
+    <div class="user"><div class="avatar">EM</div><div><strong>Acme SME Ltd</strong><small>Demo workspace</small></div></div></div>
+  </header>
+  <div class="content">
+    <section class="welcome">
+      <div><div class="eyebrow">Your sustainability workspace</div><h1>Good data. Better decisions.</h1><p>Collect, consolidate and understand your environmental and ESG data in one place.</p></div>
+      <div class="welcome-note"><span>🌱</span>Small changes.<br>Big impact.</div>
+    </section>
+    <div class="metrics" id="overviewMetrics">
+      <article class="metric"><div class="metric-head"><span>Energy usage</span><span class="metric-icon">ϟ</span></div><div class="metric-value" id="metricEnergy">18,523 kWh</div><div class="metric-foot"><span class="positive">●</span> Gas + electricity this month</div></article>
+      <article class="metric"><div class="metric-head"><span>Environmental spend</span><span class="metric-icon">€</span></div><div class="metric-value" id="metricSpend">€2,086</div><div class="metric-foot">Energy and waste costs</div></article>
+      <article class="metric"><div class="metric-head"><span>Waste recycled</span><span class="metric-icon">♻</span></div><div class="metric-value" id="metricRecycle">68%</div><div class="metric-foot">Share of recorded waste recycled</div></article>
+      <article class="metric"><div class="metric-head"><span>Governance coverage</span><span class="metric-icon">✓</span></div><div class="metric-value" id="metricGovernance">75%</div><div class="metric-foot">Policies and initiatives recorded</div></article>
+    </div>
+
+    <nav class="view-tabs" aria-label="Data views">
+      <button class="tab active" data-view="energy">ϟ &nbsp; Energy Usage</button>
+      <button class="tab" data-view="waste">♻ &nbsp; Waste Consumption</button>
+      <button class="tab" data-view="governance">⬡ &nbsp; Governance</button>
+    </nav>
+
+    <section class="view" id="view-overview">
+      <div class="section-grid">
+        <div class="panel"><div class="panel-head"><div><h2>Environmental performance</h2><div class="panel-sub">Monthly usage and spend across your business</div></div><button class="small-btn" data-go="reports">View all data →</button></div><div class="chart-title">Recent energy usage</div><svg id="overviewChart" class="chart" viewBox="0 0 600 225" role="img" aria-label="Bar chart showing recent energy usage"></svg><div class="legend"><span><i class="dot" style="background:#26724e"></i>Electricity</span><span><i class="dot" style="background:#a6cba2"></i>Gas</span></div></div>
+        <div class="panel insights"><div class="panel-head"><div><h2>Data quality check</h2><div class="panel-sub">Keep your records complete and useful</div></div><span class="metric-icon">✓</span></div><div class="insight"><div class="insight-icon">↗</div><div><strong>One place for monthly data</strong><p>Energy and waste records are consolidated in this demo workspace.</p></div></div><div class="insight"><div class="insight-icon">!</div><div><strong>Check your reporting period</strong><p>Confirm bills and collection weights before using the figures for formal reporting.</p></div></div><div class="insight"><div class="insight-icon">＋</div><div><strong>Record your governance activity</strong><p>Keep policies, owners and review dates up to date.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="view active" id="view-energy">
+      <div class="section-grid">
+        <div class="panel">
+          <div class="panel-head"><div><h2>Energy Usage</h2><div class="panel-sub">Record monthly gas and electricity consumption and spend.</div></div><button class="small-btn" id="resetEnergy">Reset demo data</button></div>
+          <div class="data-cards">
+            <div class="data-card"><div class="data-title"><span>🔥</span> Gas</div><div class="data-number" id="gasTotal">3,240 kWh</div><div class="data-sub" id="gasCost">Spend: €486.00</div></div>
+            <div class="data-card"><div class="data-title"><span>ϟ</span> Electricity</div><div class="data-number" id="electricTotal">15,283 kWh</div><div class="data-sub" id="electricCost">Spend: €1,298.00</div></div>
+          </div>
+          <div class="toolbar"><div><h2>Monthly usage & spend</h2><p>Edit the figures below; totals update automatically.</p></div><button class="btn" id="addEnergyMonth">＋ Add month</button></div>
+          <div class="table-wrap"><table id="energyTable"><thead><tr><th>Month</th><th>Gas usage (kWh)</th><th>Gas cost (€)</th><th>Electricity (kWh)</th><th>Electricity cost (€)</th></tr></thead><tbody></tbody></table></div>
+          <div class="table-total"><span>Total usage <strong id="energyUsageGrand">18,523 kWh</strong></span><span>Total spend <strong id="energySpendGrand">€1,784.00</strong></span></div>
+          <p class="table-note">Demo figures only. Enter your actual bill or meter data for meaningful reporting. Usage and costs are illustrative.</p>
+        </div>
+        <div><div class="panel insights"><div class="panel-head"><div><h2>Energy insights</h2><div class="panel-sub">Prompts to help guide a review</div></div><span class="metric-icon">✦</span></div><div class="insight"><div class="insight-icon">💡</div><div><strong>Review high-use periods</strong><p>Compare consumption across months and investigate unusual increases.</p></div></div><div class="insight"><div class="insight-icon">🏢</div><div><strong>Look at operating hours</strong><p>Check heating, cooling and equipment schedules against occupancy.</p></div></div><div class="insight"><div class="insight-icon">📄</div><div><strong>Keep evidence together</strong><p>Record invoice references alongside each monthly entry.</p></div></div></div><div class="carbon-card"><h3>🌿 Energy data at a glance</h3><div class="carbon-value" id="energySpendSide">€1,784</div><p>Recorded gas and electricity spend for the displayed months.</p><button class="btn" data-go="reports">Review all data →</button></div></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-waste">
+      <div class="panel">
+        <div class="toolbar"><div><h2>Waste Consumption</h2><p>Capture quantities and costs for each waste stream by month.</p></div><div class="actions"><button class="btn secondary" id="resetWaste">Reset demo data</button><button class="btn" id="addWasteRow">＋ Add record</button></div></div>
+        <div class="table-wrap"><table id="wasteTable"><thead><tr><th>Month</th><th>Waste stream</th><th>Quantity (kg)</th><th>Cost (€)</th><th>Disposal / route</th><th></th></tr></thead><tbody></tbody></table></div>
+        <div class="table-total"><span>Total quantity <strong id="wasteQtyTotal">1,420 kg</strong></span><span>Total cost <strong id="wasteCostTotal">€302.00</strong></span></div>
+        <p class="table-note">Quantity should use a consistent unit (kg shown here). Recycled waste includes paper and plastic as separate streams. Hazardous waste should be tracked and handled according to applicable requirements.</p>
+      </div>
+      <div class="section-grid" style="margin-top:16px">
+        <div class="panel"><div class="panel-head"><div><h2>Waste mix</h2><div class="panel-sub">Share of recorded quantity by waste stream</div></div></div><svg id="wasteChart" class="chart" viewBox="0 0 600 190" role="img" aria-label="Waste quantity chart"></svg><div class="legend"><span><i class="dot" style="background:#28724f"></i>General</span><span><i class="dot" style="background:#80b78a"></i>Paper</span><span><i class="dot" style="background:#c0d9ae"></i>Plastic</span><span><i class="dot" style="background:#d6a16c"></i>Hazardous</span></div></div>
+        <div class="panel insights"><div class="panel-head"><div><h2>Waste review prompts</h2><div class="panel-sub">Opportunities to investigate</div></div></div><div class="insight"><div class="insight-icon">♻</div><div><strong>Check recycling separation</strong><p>Compare paper and plastic collection volumes with general waste.</p></div></div><div class="insight"><div class="insight-icon">📦</div><div><strong>Reduce waste at source</strong><p>Review purchasing, packaging and stock handling practices.</p></div></div><div class="insight"><div class="insight-icon">⚠</div><div><strong>Maintain hazardous waste records</strong><p>Keep quantities, costs and collection evidence with the relevant records.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-governance">
+      <div class="governance-grid">
+        <div class="panel"><div class="panel-head"><div><h2>Governance & ESG initiatives</h2><div class="panel-sub">Track policies, owners, review dates and employee initiatives.</div></div><button class="btn" id="addPolicy">＋ Add item</button></div><div class="policy-list" id="policyList"></div><p class="table-note">Demo statuses are illustrative. Confirm the actual existence, approval and review status of each policy.</p></div>
+        <div class="panel"><div class="panel-head"><div><h2>Add governance record</h2><div class="panel-sub">Keep ownership and progress visible.</div></div></div><form id="policyForm"><div class="form-grid"><div class="field full"><label for="policyName">Policy or initiative name *</label><input id="policyName" required placeholder="e.g. Sustainable purchasing policy"></div><div class="field"><label for="policyType">Category</label><select id="policyType"><option>Policy</option><option>Employee initiative</option><option>Training</option><option>Supplier engagement</option><option>Other</option></select></div><div class="field"><label for="policyStatus">Status</label><select id="policyStatus"><option>In place</option><option>In progress</option><option>Needs review</option><option>Planned</option></select></div><div class="field"><label for="policyOwner">Owner</label><input id="policyOwner" placeholder="e.g. Operations"></div><div class="field"><label for="policyDate">Review date</label><input id="policyDate" type="date"></div><div class="field full"><label for="policyNotes">Notes</label><textarea id="policyNotes" placeholder="Scope, evidence, next action…"></textarea></div></div><div class="form-actions"><button class="btn secondary" type="reset">Clear</button><button class="btn" type="submit">Save record</button></div></form></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-reports">
+      <div class="panel"><div class="toolbar"><div><h2>Data & Reports</h2><p>Review the current demo data and export it as CSV for further analysis.</p></div><div class="actions"><button class="btn secondary" id="exportEnergy">Export energy CSV</button><button class="btn secondary" id="exportWaste">Export waste CSV</button><button class="btn" id="exportAll">Export summary CSV</button></div></div><div class="metrics"><article class="metric"><div class="metric-head">Energy records</div><div class="metric-value" id="reportEnergyCount">3</div><div class="metric-foot">Monthly records</div></article><article class="metric"><div class="metric-head">Waste records</div><div class="metric-value" id="reportWasteCount">4</div><div class="metric-foot">Waste streams recorded</div></article><article class="metric"><div class="metric-head">Governance items</div><div class="metric-value" id="reportPolicyCount">4</div><div class="metric-foot">Policies and initiatives</div></article><article class="metric"><div class="metric-head">Missing data</div><div class="metric-value" id="missingCount">0</div><div class="metric-foot">Blank or invalid numeric entries</div></article></div><div class="panel-sub">This internal alpha uses illustrative data stored in your browser. It is not connected to utility suppliers, waste contractors, an AI service or a central database.</div></div>
+    </section>
+    <footer>EcoMetrics internal alpha · Illustrative sample data · Verify records before external or regulatory reporting.</footer>
+  </div>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const money = n => new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR'}).format(Number(n)||0);
+  const number = n => new Intl.NumberFormat('en-IE',{maximumFractionDigits:2}).format(Number(n)||0);
+  const monthName = key => { const [y,m]=key.split('-').map(Number); return new Date(y,m-1,1).toLocaleDateString('en-IE',{month:'short',year:'numeric'}); };
+  const selectedMonth = () => $('#globalMonth').value;
+  const escapeHTML = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const initialEnergy = [
+    {month:'2025-04',gas:3860,gasCost:579,electric:16300,electricCost:1385},
+    {month:'2025-05',gas:3540,gasCost:531,electric:15120,electricCost:1285},
+    {month:'2025-06',gas:3240,gasCost:486,electric:15283,electricCost:1298}
+  ];
+  const initialWaste = [
+    {month:'2025-06',stream:'General waste',qty:780,cost:168,route:'General collection'},
+    {month:'2025-06',stream:'Paper',qty:320,cost:42,route:'Recycling'},
+    {month:'2025-06',stream:'Plastic',qty:270,cost:56,route:'Recycling'},
+    {month:'2025-06',stream:'Hazardous waste',qty:50,cost:36,route:'Licensed collection'}
+  ];
+  const initialPolicies = [
+    {name:'Environmental policy',type:'Policy',status:'In place',owner:'Operations',date:'2026-06-30',notes:'Review scope and communicate to staff.'},
+    {name:'Health & safety policy',type:'Policy',status:'In place',owner:'Management',date:'2026-04-30',notes:'Maintain current approved copy.'},
+    {name:'Employee recycling initiative',type:'Employee initiative',status:'In progress',owner:'Facilities',date:'2026-09-30',notes:'Improve separation signage and awareness.'},
+    {name:'Sustainable purchasing guidelines',type:'Policy',status:'Needs review',owner:'Procurement',date:'2026-05-31',notes:'Review supplier criteria and purchasing practice.'}
+  ];
+  let energy = structuredCloneSafe(initialEnergy), waste = structuredCloneSafe(initialWaste), policies = structuredCloneSafe(initialPolicies);
+  function structuredCloneSafe(x){return JSON.parse(JSON.stringify(x));}
+  function showToast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove('show'),3000);}
+  const titles={overview:'Environmental overview',energy:'Energy Usage',waste:'Waste Consumption',governance:'Governance & ESG',reports:'Data & Reports'};
+  function setView(view){
+    if(!titles[view])return;
+    $$('.view').forEach(el=>el.classList.toggle('active',el.id==='view-'+view));
+    $$('[data-view]').forEach(el=>el.classList.toggle('active',el.dataset.view===view));
+    $('#pageTitle').textContent=titles[view];
+    $('#sidebar').classList.remove('open');
+    if(view==='overview')renderOverview();
+    if(view==='energy')renderEnergy();
+    if(view==='waste')renderWaste();
+    if(view==='governance')renderPolicies();
+    if(view==='reports')renderReports();
+  }
+  $$('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+  $$('[data-go]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.go)));
+  $('#mobileMenu').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
+  $('#globalMonth').addEventListener('change',()=>{renderMetrics();renderEnergy();renderWaste();renderOverview();});
+
+  function energyForMonth(month){return energy.find(r=>r.month===month)||{month,gas:0,gasCost:0,electric:0,electricCost:0};}
+  function renderEnergy(){
+    const focus=energyForMonth(selectedMonth());
+    $('#gasTotal').textContent=number(focus.gas)+' kWh';$('#gasCost').textContent='Spend: '+money(focus.gasCost);
+    $('#electricTotal').textContent=number(focus.electric)+' kWh';$('#electricCost').textContent='Spend: '+money(focus.electricCost);
+    const rows=[...energy].sort((a,b)=>b.month.localeCompare(a.month));
+    $('#energyTable tbody').innerHTML=rows.map((r)=>`<tr><td>${escapeHTML(monthName(r.month))}</td><td><input type="number" min="0" step="any" aria-label="Gas usage for ${escapeHTML(monthName(r.month))}" data-energy="${r.month}" data-field="gas" value="${r.gas}"></td><td><input type="number" min="0" step="any" aria-label="Gas cost for ${escapeHTML(monthName(r.month))}" data-energy="${r.month}" data-field="gasCost" value="${r.gasCost}"></td><td><input type="number" min="0" step="any" aria-label="Electricity usage for ${escapeHTML(monthName(r.month))}" data-energy="${r.month}" data-field="electric" value="${r.electric}"></td><td><input type="number" min="0" step="any" aria-label="Electricity cost for ${escapeHTML(monthName(r.month))}" data-energy="${r.month}" data-field="electricCost" value="${r.electricCost}"></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No energy data yet. Add a month to begin.</td></tr>';
+    const usage=energy.reduce((s,r)=>s+num(r.gas)+num(r.electric),0),spend=energy.reduce((s,r)=>s+num(r.gasCost)+num(r.electricCost),0);
+    $('#energyUsageGrand').textContent=number(usage)+' kWh';$('#energySpendGrand').textContent=money(spend);$('#energySpendSide').textContent=money(spend);
+    $('#energyTable').querySelectorAll('input').forEach(input=>input.addEventListener('change',()=>{const r=energy.find(x=>x.month===input.dataset.energy);if(!r)return;r[input.dataset.field]=Math.max(0,num(input.value));renderMetrics();renderEnergy();renderOverview();}));
+    renderMetrics();renderOverview();
+  }
+  function num(v){const n=Number(v);return Number.isFinite(n)?n:0;}
+  function renderWaste(){
+    const sorted=[...waste].sort((a,b)=>b.month.localeCompare(a.month));
+    $('#wasteTable tbody').innerHTML=sorted.map((r)=>{const i=waste.indexOf(r);return `<tr><td><input type="month" aria-label="Waste month" data-waste="${i}" data-field="month" value="${escapeHTML(r.month)}"></td><td><select aria-label="Waste stream" data-waste="${i}" data-field="stream">${['General waste','Paper','Plastic','Hazardous waste'].map(s=>`<option ${s===r.stream?'selected':''}>${s}</option>`).join('')}</select></td><td><input type="number" min="0" step="any" aria-label="Waste quantity in kg" data-waste="${i}" data-field="qty" value="${r.qty}"></td><td><input type="number" min="0" step="any" aria-label="Waste cost" data-waste="${i}" data-field="cost" value="${r.cost}"></td><td><input aria-label="Disposal route" data-waste="${i}" data-field="route" value="${escapeHTML(r.route)}"></td><td><button class="small-btn" data-delete-waste="${i}" aria-label="Delete waste record">✕</button></td></tr>`;}).join('')||'<tr><td colspan="6" class="empty">No waste records yet. Add a record to begin.</td></tr>';
+    const qty=waste.reduce((s,r)=>s+num(r.qty),0),cost=waste.reduce((s,r)=>s+num(r.cost),0);
+    $('#wasteQtyTotal').textContent=number(qty)+' kg';$('#wasteCostTotal').textContent=money(cost);
+    $('#wasteTable').querySelectorAll('[data-waste]').forEach(el=>el.addEventListener('change',()=>{const r=waste[Number(el.dataset.waste)];if(!r)return;const f=el.dataset.field;r[f]=['qty','cost'].includes(f)?Math.max(0,num(el.value)):el.value;renderWaste();renderMetrics();renderOverview();}));
+    $$('[data-delete-waste]').forEach(b=>b.addEventListener('click',()=>{waste.splice(Number(b.dataset.deleteWaste),1);renderWaste();renderMetrics();renderOverview();showToast('Waste record removed.');}));
+    drawWasteChart();renderMetrics();
+  }
+  function drawWasteChart(){
+    const streams=['General waste','Paper','Plastic','Hazardous waste'],colors=['#28724f','#80b78a','#c0d9ae','#d6a16c'];
+    const values=streams.map(s=>waste.filter(r=>r.stream===s).reduce((a,r)=>a+num(r.qty),0)),max=Math.max(1,...values);
+    let svg='<line x1="150" y1="12" x2="150" y2="160" stroke="#e6eee8"/>';
+    streams.forEach((s,i)=>{const y=18+i*38,w=values[i]/max*350;svg+=`<text x="0" y="${y+14}">${s}</text><rect x="150" y="${y}" width="350" height="19" rx="5" fill="#f0f4f0"/><rect x="150" y="${y}" width="${w}" height="19" rx="5" fill="${colors[i]}"/><text x="${Math.min(565,158+w)}" y="${y+14}" text-anchor="${w>315?'end':'start'}">${number(values[i])} kg</text>`;});
+    $('#wasteChart').innerHTML=svg;
+  }
+  function renderPolicies(){
+    $('#policyList').innerHTML=policies.map((p,i)=>{const cls=p.status==='In place'?'':p.status==='Needs review'?'review':'review';const icon=p.type==='Employee initiative'?'👥':p.type==='Training'?'✦':p.type==='Supplier engagement'?'↗':'✓';return `<article class="policy"><div class="policy-check">${icon}</div><div class="policy-main"><strong>${escapeHTML(p.name)}</strong><small>${escapeHTML(p.type)} · Owner: ${escapeHTML(p.owner||'Unassigned')}<br>Review: ${escapeHTML(p.date||'Not set')}${p.notes?' · '+escapeHTML(p.notes):''}</small></div><span class="status ${cls}">${escapeHTML(p.status)}</span><button class="small-btn" data-delete-policy="${i}" aria-label="Delete governance record">✕</button></article>`;}).join('')||'<div class="empty">No governance records yet. Add your first policy or initiative.</div>';
+    $$('[data-delete-policy]').forEach(b=>b.addEventListener('click',()=>{policies.splice(Number(b.dataset.deletePolicy),1);renderPolicies();renderMetrics();showToast('Governance record removed.');}));
+    renderMetrics();
+  }
+  function renderMetrics(){
+    const focus=energyForMonth(selectedMonth()),totalEnergy=num(focus.gas)+num(focus.electric),energyCost=num(focus.gasCost)+num(focus.electricCost);
+    const focusWaste=waste.filter(r=>r.month===selectedMonth()),qty=focusWaste.reduce((s,r)=>s+num(r.qty),0),wasteCost=focusWaste.reduce((s,r)=>s+num(r.cost),0),recycled=focusWaste.filter(r=>['Paper','Plastic'].includes(r.stream)).reduce((s,r)=>s+num(r.qty),0);
+    const coverage=policies.length?Math.round(policies.filter(p=>p.status==='In place').length/policies.length*100):0;
+    $('#metricEnergy').textContent=number(totalEnergy)+' kWh';$('#metricSpend').textContent=money(energyCost+wasteCost);$('#metricRecycle').textContent=(qty?Math.round(recycled/qty*100):0)+'%';$('#metricGovernance').textContent=coverage+'%';
+    $('#reportEnergyCount').textContent=energy.length;$('#reportWasteCount').textContent=waste.length;$('#reportPolicyCount').textContent=policies.length;
+    const missing=energy.filter(r=>!r.month||[r.gas,r.gasCost,r.electric,r.electricCost].some(v=>v===''||v===null||!Number.isFinite(Number(v)))).length+waste.filter(r=>!r.month||!r.stream||r.qty===''||r.cost===''||!Number.isFinite(Number(r.qty))||!Number.isFinite(Number(r.cost))).length;
+    $('#missingCount').textContent=missing;
+  }
+  function drawEnergyChart(svgId,rows){
+    const svg=$('#'+svgId);const data=[...rows].sort((a,b)=>a.month.localeCompare(b.month)).slice(-6);if(!data.length){svg.innerHTML='<text x="20" y="35">Add monthly energy data to view chart.</text>';return;}
+    const max=Math.max(1,...data.map(r=>num(r.gas)+num(r.electric))),base=184,chartH=140,barW=Math.min(55,320/data.length),gap=(540-data.length*barW)/(data.length+1);
+    let s='';[0,.25,.5,.75,1].forEach(t=>{const y=base-t*chartH;s+=`<line x1="45" y1="${y}" x2="580" y2="${y}" stroke="#e8eee9"/><text x="37" y="${y+3}" text-anchor="end">${Math.round(max*t/1000*10)/10}k</text>`;});
+    data.forEach((r,i)=>{const x=55+gap*(i+1)+barW*i,gas=num(r.gas),elec=num(r.electric),gh=gas/max*chartH,eh=elec/max*chartH;s+=`<rect x="${x}" y="${base-eh}" width="${barW}" height="${eh}" rx="4" fill="#26724e"/><rect x="${x}" y="${base-eh-gh}" width="${barW}" height="${gh}" rx="4" fill="#a6cba2"/><text x="${x+barW/2}" y="205" text-anchor="middle">${escapeHTML(monthName(r.month).split(' ')[0])}</text>`;});
+    svg.innerHTML=s;
+  }
+  function renderOverview(){drawEnergyChart('overviewChart',energy);}
+  function renderReports(){renderMetrics();}
+  function csvEscape(v){const s=String(v??'');return '"'+s.replace(/"/g,'""')+'"';}
+  function downloadCSV(filename,rows){const csv=rows.map(r=>r.map(csvEscape).join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);showToast('CSV export prepared.');}
+  $('#exportEnergy').addEventListener('click',()=>downloadCSV('ecometrics-energy.csv',[['Month','Gas usage kWh','Gas cost EUR','Electricity usage kWh','Electricity cost EUR'],...energy.map(r=>[r.month,r.gas,r.gasCost,r.electric,r.electricCost])]));
+  $('#exportWaste').addEventListener('click',()=>downloadCSV('ecometrics-waste.csv',[['Month','Waste stream','Quantity kg','Cost EUR','Disposal route'],...waste.map(r=>[r.month,r.stream,r.qty,r.cost,r.route])]));
+  $('#exportAll').addEventListener('click',()=>downloadCSV('ecometrics-summary.csv',[['Data type','Month','Category','Quantity','Unit','Cost EUR','Notes'],...energy.flatMap(r=>[['Energy',r.month,'Gas',r.gas,'kWh',r.gasCost,''],['Energy',r.month,'Electricity',r.electric,'kWh',r.electricCost,'']]),...waste.map(r=>['Waste',r.month,r.stream,r.qty,'kg',r.cost,r.route]),...policies.map(r=>['Governance',r.date,r.name,'','','',`${r.type}; ${r.status}; owner: ${r.owner}; ${r.notes}`])]));
+  $('#addEnergyMonth').addEventListener('click',()=>{const m=selectedMonth();if(energy.some(r=>r.month===m)){showToast('A record already exists for '+monthName(m)+'.');return;}energy.push({month:m,gas:0,gasCost:0,electric:0,electricCost:0});renderEnergy();showToast('Added '+monthName(m)+'. Enter your usage and spend.');});
+  $('#resetEnergy').addEventListener('click',()=>{if(confirm('Reset all energy entries to the original demo data?')){energy=structuredCloneSafe(initialEnergy);renderEnergy();showToast('Energy demo data reset.');}});
+  $('#addWasteRow').addEventListener('click',()=>{waste.push({month:selectedMonth(),stream:'General waste',qty:0,cost:0,route:'General collection'});renderWaste();showToast('New waste record added.');});
+  $('#resetWaste').addEventListener('click',()=>{if(confirm('Reset all waste entries to the original demo data?')){waste=structuredCloneSafe(initialWaste);renderWaste();showToast('Waste demo data reset.');}});
+  $('#addPolicy').addEventListener('click',()=>{ $('#policyName').focus(); $('#policyForm').scrollIntoView({behavior:'smooth',block:'center'});});
+  $('#policyForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#policyName').value.trim();if(!name)return;policies.push({name,type:$('#policyType').value,status:$('#policyStatus').value,owner:$('#policyOwner').value.trim(),date:$('#policyDate').value,notes:$('#policyNotes').value.trim()});e.target.reset();renderPolicies();showToast('Governance record saved in this session.');});
+  renderEnergy();renderWaste();renderPolicies();renderOverview();renderMetrics();
+})();
+</script>
+</body>
+</html>
